@@ -2,7 +2,7 @@
 
 This is a simple desktop application to help automate marking attendance for Cydeo classes.
 
-*Selects "4" (if not already set to "2" or "4") for **all** the buttons (class recordings) in the row for the selected students.*
+***Selects "4" (if not already set to "2" or "4") for all the buttons (class recordings) in the row for the selected students.***
 
 ## Prerequisites
 
