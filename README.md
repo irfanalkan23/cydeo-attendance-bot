@@ -30,6 +30,9 @@ Before you begin, ensure you have [Node.js](https://nodejs.org/) installed on yo
     ```bash
     node save-auth.js
     ```
+54.  **Select the Batch you want to mark attendance for:**
+    Select the Batch you want to mark attendance for. 
+    Select "Settings button > Table size > 20" to make sure all the students in your group are displayed.
 
 ## How to Use
 
