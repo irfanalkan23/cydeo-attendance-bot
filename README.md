@@ -11,7 +11,7 @@ Before you begin, ensure you have [Node.js](https://nodejs.org/) installed on yo
 ## Setup Instructions
 
 1.  **Clone the repository:**
-    Open your terminal or command prompt and run the following command to download the project:
+    Open your terminal (eg. VSCode or IntelliJ) or command prompt and run the following command to download the project:
     ```bash
     git clone https://github.com/irfanalkan23/cydeo-attendance-bot.git
     ```
