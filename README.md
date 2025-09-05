@@ -2,6 +2,8 @@
 
 This is a simple desktop application to help automate marking attendance for Cydeo classes.
 
+*Selects "4" (if not already set to "2" or "4") for all the buttons (class recordings) in the row for the selected students.*
+
 ## Prerequisites
 
 Before you begin, ensure you have [Node.js](https://nodejs.org/) installed on your computer.
