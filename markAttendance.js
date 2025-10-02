@@ -8,7 +8,7 @@ async function getStudentNames() {
 
     try {
         await page.goto('https://cydeoanalytics.com/attendance/class?size=20', { waitUntil: 'domcontentloaded' });
-        
+
         await page.locator('//table/tbody[.//span]//tr[1]/td[2]/span').waitFor({ timeout: 30000 });
 
         const namesLocator = page.locator('//table/tbody[.//span]//td[2]/span');
@@ -23,7 +23,7 @@ async function getStudentNames() {
         await browser.close();
         return names;
     } catch (err) {
-        console.error('❌ Failed to load student names:', err.message);
+        console.error('Failed to load student names:', err.message);
         await browser.close();
         return [];
     }
@@ -37,7 +37,7 @@ async function markAttendance(selectedNames) {
         const page = await context.newPage();
 
         await page.goto('https://cydeoanalytics.com/attendance/class?size=20', { waitUntil: 'domcontentloaded' });
-        
+
         await page.locator('//table/tbody[.//span]//tr[1]/td[2]/span').waitFor({ timeout: 30000 });
 
         const rowsLocator = page.locator('//table/tbody[.//span]/tr');
@@ -50,11 +50,11 @@ async function markAttendance(selectedNames) {
             const row = rowsLocator.nth(i);
             const nameSpan = row.locator('td:nth-child(2) > span');
             const name = await nameSpan.textContent();
-            
+
             if (selectedNames.includes(name.trim())) {
                 console.log(`Processing "${name.trim()}"...`);
                 let updated = false;
-                
+
                 const dropdownButtons = row.locator('button.status-icon');
                 const buttonCount = await dropdownButtons.count();
 
@@ -69,7 +69,7 @@ async function markAttendance(selectedNames) {
                     }
                 }
 
-                if(updated) {
+                if (updated) {
                     studentsUpdated++;
                     log.push(`[${new Date().toISOString()}] Updated attendance for "${name.trim()}"`);
                     console.log(`  -> Marked all as "4".`);
@@ -81,13 +81,13 @@ async function markAttendance(selectedNames) {
 
         if (log.length > 0) {
             fs.writeFileSync('attendance-log.txt', log.join('\n') + '\n', { flag: 'a' });
-            console.log(`✅ Attendance marking complete. Updated ${studentsUpdated} students.`);
+            console.log(`Attendance marking complete. Updated ${studentsUpdated} students.`);
         } else {
-            console.log('✅ No students needed an attendance update.');
+            console.log('No students needed an attendance update.');
         }
 
     } catch (err) {
-        console.error('❌ Failed to mark attendance:', err);
+        console.error('Failed to mark attendance:', err);
     } finally {
         if (browser) {
             await browser.close();
